@@ -18,6 +18,10 @@ const users = [
     { id: 5, name: 'Taleb', email: 'Taleb@gmail.com', phone: '01600035000' }
 ]
 
+app.get('/users', (req, res) => {
+    res.send(users)
+})
+// input field data
 app.post('/user', (req, res) => {
     console.log('Request', req.body)
     const user = req.body;
@@ -26,6 +30,7 @@ app.post('/user', (req, res) => {
     console.log(user)
     res.send(user)
 })
+// Dynamic users 
 app.get('/user/:id', (req, res) => {
     const id = parseInt(req.params.id);
     console.log(id)
@@ -33,15 +38,18 @@ app.get('/user/:id', (req, res) => {
     console.log(user)
     res.send(user)
 })
+
+// Port 
+app.listen(port, () => {
+    console.log(`Listening to port ${port}`)
+})
+
+
+
+// Extra 
 app.get('/fruits', (req, res) => {
     res.send('mango', 'apple', 'orange')
 })
 app.get('/fruits/mango/fazle', (req, res) => {
     res.send()
-})
-app.get('/users', (req, res) => {
-    res.send(users)
-})
-app.listen(port, () => {
-    console.log(`Listening to port ${port}`)
 })
